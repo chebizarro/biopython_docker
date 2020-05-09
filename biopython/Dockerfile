@@ -16,6 +16,7 @@ RUN echo 'deb http://archive.ubuntu.com/ubuntu bionic multiverse' >> /etc/apt/so
          python3-dev \
          unzip \
          make \
+         python3.6 \
          python3-matplotlib \
          python3-reportlab \
          python3-pip r-base \
@@ -42,7 +43,7 @@ RUN echo 'deb http://archive.ubuntu.com/ubuntu bionic multiverse' >> /etc/apt/so
          && apt-get clean
 
 #for Phylo_CDAO
-# RUN pip3 install pip --upgrade
+RUN pip3 install pip --upgrade
 RUN pip3 install rdflib --upgrade \
     && pip3 install cython --upgrade \
     && pip3 install numpy --upgrade \
