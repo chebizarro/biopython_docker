@@ -136,4 +136,4 @@ RUN python3.6 setup.py install
 
 #set default python version to 3.6
 RUN touch ~/.bash_aliases \
-	  && echo alias python=\'python3.5\' > ~/.bash_aliases
+	  && echo alias python=\'python3.6\' > ~/.bash_aliases
