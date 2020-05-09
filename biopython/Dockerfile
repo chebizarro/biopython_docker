@@ -4,9 +4,10 @@ MAINTAINER Tiago Antao <tra@popgen.net>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
-    && apt-get upgrade -y --force-yes \
-    && apt-get install -y --force-yes \
+    && apt-get upgrade -y \
+    && apt-get install -y \
     build-essential \
+    cmake \
     git \
     python3-numpy \
     wget \
