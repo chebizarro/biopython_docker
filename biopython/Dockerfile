@@ -60,7 +60,7 @@ RUN  mkdir fonts
 WORKDIR cd /usr/lib/python3.6/dist-packages/reportlab/fonts
 RUN unzip /pfbfer.zip \
     	  && mkdir -p /usr/lib/python3.6/dist-packages/reportlab/fonts
-WORKDIR /usr/lib/python3.5/dist-packages/reportlab/fonts
+WORKDIR /usr/lib/python3.6/dist-packages/reportlab/fonts
 RUN unzip /pfbfer.zip
 WORKDIR /
 RUN rm pfbfer.zip
