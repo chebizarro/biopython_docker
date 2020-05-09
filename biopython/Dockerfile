@@ -1,9 +1,9 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 MAINTAINER Tiago Antao <tra@popgen.net>
 
 ENV DEBIAN_FRONTEND noninteractive
 #We need this for phylip
-RUN echo 'deb http://archive.ubuntu.com/ubuntu xenial multiverse' >> /etc/apt/sources.list \
+RUN echo 'deb http://archive.ubuntu.com/ubuntu bionic multiverse' >> /etc/apt/sources.list \
 	 	 && apt-get update \
 		 && apt-get upgrade -y --force-yes \
 		 && apt-get install -y --force-yes \
@@ -37,7 +37,7 @@ RUN echo 'deb http://archive.ubuntu.com/ubuntu xenial multiverse' >> /etc/apt/so
          paml \
          probcons \
          python3-pandas \
-         python3.5-dev \
+         python3.6-dev \
          libxft-dev \
          && apt-get clean
 
@@ -55,11 +55,11 @@ RUN echo "export DIALIGN2_DIR=/tmp" >> .bashrc
 
 #reportlab fonts
 RUN wget http://www.reportlab.com/ftp/fonts/pfbfer.zip
-WORKDIR cd /usr/lib/python3.4/dist-packages/reportlab
+WORKDIR cd /usr/lib/python3.6/dist-packages/reportlab
 RUN  mkdir fonts
-WORKDIR cd /usr/lib/python3.4/dist-packages/reportlab/fonts
+WORKDIR cd /usr/lib/python3.6/dist-packages/reportlab/fonts
 RUN unzip /pfbfer.zip \
-    	  && mkdir -p /usr/lib/python3.5/dist-packages/reportlab/fonts
+    	  && mkdir -p /usr/lib/python3.6/dist-packages/reportlab/fonts
 WORKDIR /usr/lib/python3.5/dist-packages/reportlab/fonts
 RUN unzip /pfbfer.zip
 WORKDIR /
@@ -132,8 +132,8 @@ ENV PYTHON_PATH /biopython
 #Biopython
 RUN git clone https://github.com/biopython/biopython.git
 WORKDIR /biopython
-RUN python3.5 setup.py install
+RUN python3.6 setup.py install
 
-#set default python version to 3.5
+#set default python version to 3.6
 RUN touch ~/.bash_aliases \
 	  && echo alias python=\'python3.5\' > ~/.bash_aliases
