@@ -86,10 +86,10 @@ RUN make \
 WORKDIR /
 
 #fastsimcoal
-RUN wget http://cmpg.unibe.ch/software/fastsimcoal2/downloads/fsc_linux64.zip \
-    && unzip fsc_linux64.zip \
-    && chmod a+x fsc_linux64/fsc25221 \
-    && cp fsc_linux64/fsc25221 /usr/bin/fsc252 \
+RUN wget http://cmpg.unibe.ch/software/fastsimcoal2/downloads/fsc26_linux64.zip \
+    && unzip fsc26_linux64.zip \
+    && chmod a+x fsc26_linux64/fsc26 \
+    && cp fsc26_linux64/fsc26 /usr/bin/fsc26 \
     && rm -rf fsc_*
 
 #DSSP
