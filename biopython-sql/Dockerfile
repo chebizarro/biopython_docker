@@ -10,7 +10,7 @@ RUN apt-get install -y python3-mysql.connector
 RUN apt-get install -y postgresql-server-dev-all
 RUN apt-get clean
 
-RUN pip3 install psycopg2 --upgrade
+#RUN pip3 install psycopg2 --upgrade
 
 #Database servers
 RUN echo "host    all             all             ::1/128                 trust" > /etc/postgresql/10/main/pg_hba.conf
