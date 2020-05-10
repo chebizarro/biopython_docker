@@ -3,32 +3,40 @@ MAINTAINER Tiago Antao <tra@popgen.net>
 
 ENV DEBIAN_FRONTEND noninteractive
 
+RUN locale-gen en_GB.UTF-8
+ENV LANG en_GB.UTF-8
+ENV LANGUAGE en_GB:en
+ENV LC_ALL en_GB.UTF-8
+
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y \
-    build-essential \
-    cmake \
-    git \
-    python3-numpy \
     wget \
+    unzip \
+    git \
+    language-pack-en \
+    build-essential \
     gcc \
     g++ \
     gcc-5 \
     g++-5 \
-    python3-dev \
-    unzip \
     make \
+    cmake \
+    python3-dev \
     python3.6 \
-    python3-matplotlib \
-    python3-reportlab \
-    python3-pip r-base \
+    python3.6-dev \
+    python3-pip \
+    python3-pil \
+    postgresql-client \
+    r-base \
     clustalw \
+    clustalo \
     fasttree \
-    t-coffee python3-pil \
+    t-coffee \
     bwa \
     ncbi-blast+ \
     emboss \
-    clustalo \
+    embassy-phylip \
     phylip \
     mafft \
     muscle \
@@ -36,25 +44,28 @@ RUN apt-get update \
     phyml \
     wise \
     raxml \
-    language-pack-en \
     paml \
     probcons \
-    python3-pandas \
-    python3.6-dev \
     libxft-dev \
     && apt-get clean
 
 #for Phylo_CDAO
 RUN pip3 install pip --upgrade
-RUN pip3 install rdflib --upgrade \
-    && pip3 install cython --upgrade \
-    && pip3 install numpy --upgrade \
-    && pip3 install Pillow --upgrade \
-    && pip3 install matplotlib --upgrade \
-    && pip3 install pandas --upgrade
+RUN pip3 install --upgrade \
+    rdflib \
+    cython \
+    numpy \
+    Pillow==5.4.1 \
+    matplotlib \
+    reportlab \
+    pandas \
+    networkx \
+    mmtf-python \
+    psycopg2  \
+    mysql-connector-python
 
 #Manual software
-RUN echo "export DIALIGN2_DIR=/tmp" >> .bashrc
+RUN echo "export DIALIGN2_DIR=/usr/share/dialign" >> .bashrc
 
 #reportlab fonts
 RUN wget http://www.reportlab.com/ftp/fonts/pfbfer.zip
@@ -106,13 +117,10 @@ RUN wget https://github.com/soedinglab/xxmotif/archive/master.zip \
     && unzip master.zip \
     && rm master.zip \
     && cd xxmotif-master \
-    && mkdir build \
-    && cd build \
-    && cmake .. \
-    && make \
+    && mkdir build && cd build \
+    && cmake .. && make \
     && cp XXmotif $PREFIX/bin \
-    && cd / \
-    && rm -r xxmotif-master
+    && cd / && rm -r xxmotif-master
         
 ENV PYTHON_PATH /biopython
 
@@ -120,6 +128,7 @@ ENV PYTHON_PATH /biopython
 RUN git clone https://github.com/biopython/biopython.git
 WORKDIR /biopython
 RUN python3.6 setup.py install
+RUN python3.6 setup.py test --offline
 
 #set default python version to 3.6
 RUN touch ~/.bash_aliases \

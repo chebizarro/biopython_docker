@@ -1,0 +1,41 @@
+version: "3.0"
+services:
+
+  postgres:
+    image: postgres:9.5
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  mysql:
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+
+  biopython:
+    build: ./biopython
+    image: biopython/biopython:latest
+
+  biopython-sql:
+    image: biopython/biopython:latest
+    depends_on:
+      - postgres
+      - mysql
+
+  biopython-notebook:
+    build: ./biopython-notebook
+    image: biopython/biopython-notebook:latest
+    depends_on:
+      - postgres
+      - mysql
+
+  biopython-tutorial:
+    build: ./biopython-tutorial
+    image: biopython/biopython-tutorial:latest
+    depends_on:
+      - postgres
+      - mysql
+
+volumes:
+  db-data:
