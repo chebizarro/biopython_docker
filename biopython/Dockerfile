@@ -3,11 +3,6 @@ MAINTAINER Tiago Antao <tra@popgen.net>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN locale-gen en_GB.UTF-8
-ENV LANG en_GB.UTF-8
-ENV LANGUAGE en_GB:en
-ENV LC_ALL en_GB.UTF-8
-
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y \
@@ -123,6 +118,11 @@ RUN wget https://github.com/soedinglab/xxmotif/archive/master.zip \
     && cd / && rm -r xxmotif-master
         
 ENV PYTHON_PATH /biopython
+
+RUN locale-gen en_GB.UTF-8
+ENV LANG en_GB.UTF-8
+ENV LANGUAGE en_GB:en
+ENV LC_ALL en_GB.UTF-8
 
 #Biopython
 RUN git clone https://github.com/biopython/biopython.git
