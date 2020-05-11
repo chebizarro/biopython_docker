@@ -22,6 +22,7 @@ RUN apt-get update \
     python3.6-dev \
     python3-pip \
     python3-pil \
+    python-psycopg2 \
     postgresql-client \
     r-base \
     clustalw \
