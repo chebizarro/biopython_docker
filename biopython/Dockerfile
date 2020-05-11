@@ -57,7 +57,6 @@ RUN pip3 install --upgrade \
     pandas \
     networkx \
     mmtf-python \
-    psycopg2  \
     mysql-connector-python
 
 #Manual software
