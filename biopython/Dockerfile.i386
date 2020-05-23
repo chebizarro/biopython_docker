@@ -1,4 +1,4 @@
-FROM i386/debian:sid
+FROM i386/ubuntu:bionic
 LABEL maintainer="chebizarro@gmail.com" Description="Base Container for BioPython"
 
 RUN apt-get update && \
@@ -26,7 +26,6 @@ RUN apt-get update && \
     clustalo \
     fasttree \
     t-coffee \
-    bwa \
     ncbi-blast+ \
     emboss \
     embassy-phylip \
