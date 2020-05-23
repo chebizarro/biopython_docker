@@ -1,4 +1,4 @@
-FROM i386/ubuntu:bionic
+FROM i386/debian:stretch
 LABEL maintainer="chebizarro@gmail.com" Description="Base Container for BioPython"
 
 RUN apt-get update && \
