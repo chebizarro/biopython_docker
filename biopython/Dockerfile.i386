@@ -49,8 +49,8 @@ RUN apt-get update && \
 
 #for Phylo_CDAO
 RUN pip3 install pip --upgrade
+RUN pip3 install --upgrade setuptools
 RUN pip3 install --upgrade \
-    setuptools \
     rdflib \
     cython \
     numpy \
