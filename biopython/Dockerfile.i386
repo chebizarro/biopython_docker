@@ -94,16 +94,9 @@ RUN make \
     && cp msaprobs /usr/bin
 WORKDIR /
 
-#fastsimcoal
-RUN wget http://cmpg.unibe.ch/software/fastsimcoal2/downloads/fsc26_linux64.zip \
-    && unzip fsc26_linux64.zip \
-    && chmod a+x fsc26_linux64/fsc26 \
-    && cp fsc26_linux64/fsc26 /usr/bin/fsc26 \
-    && rm -rf fsc_*
-
 #DSSP
-RUN wget ftp://ftp.cmbi.ru.nl/pub/software/dssp/dssp-2.0.4-linux-amd64 \
-    && mv dssp-2.0.4-linux-amd64 /usr/bin/dssp \
+RUN wget ftp://ftp.cmbi.ru.nl/pub/software/dssp/dssp-2.0.4-linux-i386 \
+    && mv dssp-2.0.4-linux-i386 /usr/bin/dssp \
     && chmod a+x /usr/bin/dssp
 
 #XXmotif
