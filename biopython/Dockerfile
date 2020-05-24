@@ -69,9 +69,6 @@ RUN wget http://www.reportlab.com/ftp/fonts/pfbfer.zip
 WORKDIR /usr/lib/python3.6/dist-packages/reportlab
 RUN  mkdir fonts
 WORKDIR /usr/lib/python3.6/dist-packages/reportlab/fonts
-RUN unzip /pfbfer.zip \
-    && mkdir -p /usr/lib/python3.6/dist-packages/reportlab/fonts
-WORKDIR /usr/lib/python3.6/dist-packages/reportlab/fonts
 RUN unzip /pfbfer.zip
 WORKDIR /
 RUN rm pfbfer.zip
