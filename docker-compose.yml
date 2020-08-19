@@ -25,6 +25,8 @@ services:
   biopython:
     build: ./biopython
     image: biopython/biopython:latest
+    environment:
+      TZ: America/Los_Angeles
 
   biopython-sql:
     image: biopython/biopython:latest

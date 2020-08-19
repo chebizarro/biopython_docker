@@ -1,8 +1,9 @@
 FROM ubuntu:18.04
 LABEL maintainer="chebizarro@gmail.com" Description="Base Container for BioPython"
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
+ENV TZ=Europe/London
+
+RUN apt-get install -y --no-install-recommends \
     wget \
     unzip \
     git \
