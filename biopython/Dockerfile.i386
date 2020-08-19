@@ -1,4 +1,4 @@
-FROM i386/ubuntu:bionic
+FROM i386/ubuntu:xenial
 LABEL maintainer="chebizarro@gmail.com" Description="Base Container for BioPython"
 
 ENV DEBIAN_FRONTEND noninteractive

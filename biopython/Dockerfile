@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:xenial
 LABEL maintainer="chebizarro@gmail.com" Description="Base Container for BioPython"
 
 RUN apt-get update && \
