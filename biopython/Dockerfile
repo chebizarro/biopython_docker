@@ -3,7 +3,8 @@ LABEL maintainer="chebizarro@gmail.com" Description="Base Container for BioPytho
 
 ENV TZ=Europe/London
 
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
     wget \
     unzip \
     git \
