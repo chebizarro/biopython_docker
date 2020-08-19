@@ -19,3 +19,8 @@ RUN echo "service mysql start" >> .bashrc
 RUN echo "export LANG=en_GB.UTF-8" >> .bashrc
 RUN echo "service postgresql start" > entrypoint.sh
 RUN echo "service mysql start" >> entrypoint.sh
+
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
