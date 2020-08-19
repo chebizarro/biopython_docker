@@ -6,9 +6,9 @@ services:
     networks:
       - backend
     environment:
-      POSTGRES_DB: biosql_test
-      POSTGRES_USER: biosql_user
-      POSTGRES_PASSWORD: biosql_pass
+      - POSTGRES_DB=biosql_test
+      - POSTGRES_USER=biosql_user
+      - POSTGRES_PASSWORD=biosql_pass
     volumes:
       - db-data:/var/lib/postgresql/data
 
@@ -17,8 +17,8 @@ services:
     networks:
       - backend
     environment:
-      MYSQL_ROOT_PASSWORD: biosql_pass
-      MYSQL_DATABASE: biosql_test
+      - MYSQL_ROOT_PASSWORD=biosql_pass
+      - MYSQL_DATABASE=biosql_test
     volumes:
       - db-data:/var/lib/mysql
 
@@ -26,7 +26,7 @@ services:
     build: ./biopython
     image: biopython/biopython:latest
     environment:
-      TZ: America/Los_Angeles
+      - TZ=America/Los_Angeles
 
   biopython-sql:
     image: biopython/biopython:latest

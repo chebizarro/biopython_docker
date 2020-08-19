@@ -1,7 +1,9 @@
 FROM ubuntu:18.04
 LABEL maintainer="chebizarro@gmail.com" Description="Base Container for BioPython"
 
+#Set timezone
 ENV TZ=Europe/London
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
